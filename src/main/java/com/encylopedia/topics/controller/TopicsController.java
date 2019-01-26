@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.encylopedia.topics.exception.TopicsErrorResponseVO;
 import com.encylopedia.topics.exception.TopicsServiceException;
-import com.encylopedia.topics.vo.GetTopicsVO;
+import com.encylopedia.topics.vo.TopicVO;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -54,7 +54,7 @@ public class TopicsController {
 			@ApiImplicitParam(name = "X-EB-APP_INFO", required = true, dataType = "string", paramType = "header", value = "API consumer information pipe delimeted", example = "{App Name}|{Channel Id}|{Channel Name}|{RequestUUID}|{UserId}") 
 			})
 	@RequestMapping(value = "/topic", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
-	public ResponseEntity<GetTopicsVO> getTopic(@ApiParam(name="topicId",value="Topic Id for which the topic details are retrieved",required=true) @RequestParam("topic_id") String topicId, HttpServletRequest request) throws TopicsServiceException{
+	public ResponseEntity<TopicVO> getTopic(@ApiParam(name="topicId",value="Topic Id for which the topic details are retrieved",required=true) @RequestParam("topic_id") String topicId, HttpServletRequest request) throws TopicsServiceException{
 		logger.info("Beginning of getTopic");
 		if(logger.isDebugEnabled()) {
 			logger.debug("ConsumerInfo: {}, TopicId: {}",request.getHeader("X-EB-APP_INFO"), topicId);
@@ -75,7 +75,7 @@ public class TopicsController {
 			@ApiImplicitParam(name = "X-EB-APP_INFO", required = true, dataType = "string", paramType = "header", value = "API consumer information pipe delimeted", example = "{App Name}|{Channel Id}|{Channel Name}|{RequestUUID}|{UserId}") 
 			})
 	@RequestMapping(value = "/class", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
-	public ResponseEntity<GetTopicsVO> getTopicByClassName(@ApiParam(name="className",value="Class Name for which all the matching topic details are retrieved",required=true) @RequestParam("class-name") String topicId, HttpServletRequest request) throws TopicsServiceException{
+	public ResponseEntity<TopicVO> getTopicByClassName(@ApiParam(name="className",value="Class Name for which all the matching topic details are retrieved",required=true) @RequestParam("class-name") String topicId, HttpServletRequest request) throws TopicsServiceException{
 		logger.info("Beginning of getTopicByClassName");
 		if(logger.isDebugEnabled()) {
 			logger.debug("ConsumerInfo: {}, ClassName: {}",request.getHeader("X-EB-APP_INFO"), topicId);
@@ -97,7 +97,7 @@ public class TopicsController {
 			@ApiImplicitParam(name = "X-EB-APP_INFO", required = true, dataType = "string", paramType = "header", value = "API consumer information pipe delimeted", example = "{App Name}|{Channel Id}|{Channel Name}|{RequestUUID}|{UserId}") 
 			})
 	@RequestMapping(value = "/all/topic", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
-	public ResponseEntity<GetTopicsVO> getAllTopics(HttpServletRequest request) throws TopicsServiceException{
+	public ResponseEntity<TopicVO> getAllTopics(HttpServletRequest request) throws TopicsServiceException{
 		logger.info("Beginning of getAllTopics , ConsumerInfo: {}",request.getHeader("X-EB-APP_INFO"));
 		if(logger.isDebugEnabled()) {
 			logger.debug("ConsumerInfo: {}",request.getHeader("X-EB-APP_INFO"));
