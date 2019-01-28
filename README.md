@@ -17,24 +17,24 @@ insert into topic values(4143,'acrobatic-skiing','sports');
 
 To Deploy into PCF : 
 Login to PCF :
-cf.exe login --skip-ssl-validation -a https://api.run.pivotal.io -o <<Org-Name>> -u <<Username>> -p <<Password> or 
-  cf login --skip-ssl-validation -a https://api.run.pivotal.io -o <<Org-Name>> -u <<Username>> -p <<Password> or
+cf.exe login --skip-ssl-validation -a https://api.run.pivotal.io -o Org-Name -u Username -p Password or 
+  cf login --skip-ssl-validation -a https://api.run.pivotal.io -o Org-Name -u Username -p Password or
  Push the application to PCF 
- cf.exe push <PCF ApplicationName> -p <<Jar path>> or 
-  cf push <PCF ApplicationName> -p <<Jar path>> 
+ cf.exe push PCF ApplicationName -p Jar path or 
+  cf push PCF ApplicationName -p Jar path
  
   Since we are using cloud connectors we would need to create a user provided service in PCF 
   Here is the command :
-  cf create-user-provided-service TOPIC_DB_SERVICE -p \'{\"jdbcUrl\":\"<<URLValue>>\"}\'
-  cf bind-service <<PCFApplicationName>> TOPIC_DB_SERVICE
+  cf create-user-provided-service TOPIC_DB_SERVICE -p \'{\"jdbcUrl\":\"URLValue\"}\'
+  cf bind-service PCFApplicationName TOPIC_DB_SERVICE
   Example of Url Value
   jdbcUrl (for Oracle)
-  jdbcUrl = jdbc:oracle:thin:<UserName>/<password>@ldap://<hostname:port>/<schemaName>,cn=OracleContext
+  jdbcUrl = jdbc:oracle:thin:UserName/password@ldap://hostname:port/schemaName,cn=OracleContext
 
 
 
 Swagger ui can be seen once the app is in running state
 https://encyclopediabritanicaapi.cfapps.io/swagger-ui.html
-https://<PCFAppName>>/swagger-ui.html
+https://PCFAppName/swagger-ui.html
   
 
