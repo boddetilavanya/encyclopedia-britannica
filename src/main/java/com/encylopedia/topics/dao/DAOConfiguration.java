@@ -21,7 +21,7 @@ public class DAOConfiguration extends AbstractCloudConfig{
 		DataSource serviceDataSource=null;
 		PoolConfig poolConfig=new PoolConfig(1,2,2); //minConnectionPool,MaxconnectionPool, MaxWaittime
 		DataSourceConfig dbConfig=new DataSourceConfig(poolConfig,null);
-		serviceDataSource=cloud().getServiceConnector("TOPIC_DB_DETAILS", DataSource.class, dbConfig);
+		serviceDataSource=cloud().getServiceConnector("TOPIC_DB_SERVICE", DataSource.class, dbConfig);
 		
 		logger.info("End of createDataSource");
 		return serviceDataSource;

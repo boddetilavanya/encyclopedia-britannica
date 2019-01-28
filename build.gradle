@@ -31,8 +31,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	compile "io.springfox:springfox-swagger2:2.7.0"
 	compile "io.springfox:springfox-swagger-ui:2.7.0"
-	compile "com.h2database:h2"
-	
+	runtime "com.h2database:h2"
+	    runtime("mysql:mysql-connector-java:5.1.25")
+	compile("org.springframework.boot:spring-boot-starter-actuator") 	
 	compile "org.springframework.boot:spring-boot-starter-web"
 	compile "javax.activation:activation:1.1.1"
 	compile "org.springframework.boot:spring-boot-starter-data-jpa"
